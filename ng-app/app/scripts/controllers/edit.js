@@ -38,14 +38,14 @@ angular.module('candidateApp')
         console.log($scope.candidate.state);
       }
 
-      $scope.$watchCollection('myForm', function(newVal, oldVal) {
-        console.log('!!!');
-        if (true) {
-          $scope.readySave = "ready to save";      
-        } else {
-          $scope.readySave = "";
-        }
-      }, true);
+      // $scope.$watchCollection('myForm', function(newVal, oldVal) {
+      //   console.log('!!!');
+      //   if (true) {
+      //     $scope.readySave = "ready to save";      
+      //   } else {
+      //     $scope.readySave = "";
+      //   }
+      // }, true);
 
       $scope.save = function () {
         $location.path("#/");
