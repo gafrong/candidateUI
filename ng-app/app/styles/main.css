@@ -27,6 +27,10 @@ body {
 .right {
   text-align: right;
 }
+.padding-md {
+  margin: 20px;
+  padding: 10px;
+}
 .no-list-style {
   list-style-type: none;
 }
