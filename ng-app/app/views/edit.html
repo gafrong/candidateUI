@@ -1,12 +1,118 @@
-<form>
+<form name="myForm" class="form-horizontal">
   <div class="form-group">
-    <input type="text" ng-model="candidate.name" class="form-control" placeholder="name"><br>
-    <input type="radio" class="" ng-model="candidate.available"> Currently Employed<br>
-    <input type="email" ng-model="candidate.email" class="form-control" placeholder="email"><br>
-    <input type="text" ng-model="candidate.street" class="form-control" placeholder="street"><br>
-    <input type="text" ng-model="candidate.state" class="form-control" placeholder="state"><br>
-    <input type="text" ng-model="candidate.desired" class="form-control" placeholder="desired salary"><br>
-    <input type="text" ng-model="candidate.current" class="form-control" placeholder="current salary"><br>
-    <button ng-click="save()" class="btn-primary btn-sm">Save</button>
+    <label for="inputName" class="col-sm-3 control-label">Name: </label>
+    <div class="col-sm-9">
+      <input 
+        type="text" 
+        name="name"
+        class="form-control input-group" 
+        ng-model="candidate.name" 
+        placeholder="name" 
+        id="inputName" required>
+      <span style="color:red" ng-show="myForm.name.$dirty && myForm.name.$invalid">
+      <span ng-show="myForm.name.$error.required">Name is required.</span>
+      </span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmployed" class="col-sm-3 control-label">Employed: </label>
+    <div class="col-sm-9">
+      <input 
+        type="radio" 
+        class="form-control input-group" 
+        ng-model="candidate.employed" 
+        placeholder="name" 
+        id="inputEmployed" 
+        ng-value="true" 
+        name="{{$parent.$index}}" required> 
+        <span class="float-left" ng-if="candidate.employed == true"> Yes</span><span ng-if="candidate.employed == false"> No</span>
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputEmail" class="col-sm-3 control-label">Email: </label>
+    <div class="col-sm-9">
+      <input 
+        type="email" 
+        name="email"
+        class="form-control input-group" 
+        ng-model="candidate.email" 
+        placeholder="email" 
+        id="inputEmail" required>
+      <span style="color:red" ng-show="myForm.email.$dirty && myForm.email.$invalid">
+      <span ng-show="myForm.email.$error.required">Email is required.</span>
+      </span>
+    </div>
+  </div>
+  
+  <div class="form-group">
+    <label for="inputStreet" class="col-sm-3 control-label">Street: </label>
+    <div class="col-sm-9">
+      <input 
+        type="text" 
+        name="street"
+        class="form-control input-group" 
+        ng-model="candidate.street" 
+        placeholder="street" 
+        id="inputStreet" required>
+      <span style="color:red" ng-show="myForm.street.$dirty && myForm.street.$invalid">
+      <span ng-show="myForm.street.$error.required">Street is required.</span>
+      </span>
+    </div>
+  </div>
+  
+  <div class="form-group"> 
+    <label for="dropdown" class="col-sm-3 control-label">State: </label>
+    <div class="dropdown col-sm-9">
+      <a 
+        class="btn btn-default dropdown-toggle" 
+        type="button" 
+        name="state"
+        id="dropdownMenu1" 
+        data-toggle="dropdown" 
+        aria-haspopup="true" 
+        aria-expanded="true"
+        required>
+        {{candidate.state}}
+        <span class="caret"></span>
+      </a>
+      <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+        <li><a ng-click="selectState('VIC')">VIC</a></li>
+        <li><a ng-click="selectState('QLD')">QLD</a></li>
+        <li><a ng-click="selectState('TAS')">TAS</a></li>
+        <li><a ng-click="selectState('WA')">WA</a></li>
+        <li><a ng-click="selectState('SA')">SA</a></li>
+        <li><a ng-click="selectState('NSW')">NSW</a></li>
+      </ul>
+      <span style="color:red" ng-show="myForm.state.$dirty && myForm.state.$invalid">
+      <span ng-show="myForm.state.$error.required">State is required.</span>
+      </span>
+    </div>
   </div>  
+  <div class="form-group">
+    <label for="inputDesired" class="col-sm-3 control-label">Desired Pay: </label>
+    <div class="col-sm-9">
+      <input 
+        type="text" 
+        class="form-control input-group" 
+        ng-model="candidate.desired" 
+        placeholder="desired salary" 
+        id="inputDesired">
+    </div>
+  </div>
+  <div class="form-group" ng-if="candidate.employed == true">
+    <label for="inputCurrent" class="col-sm-3 control-label">Current Pay: </label>
+    <div class="col-sm-9">
+      <input 
+        type="text" 
+        class="form-control input-group" 
+        ng-model="candidate.current" 
+        placeholder="current salary" 
+        id="inputCurrent">
+    </div>
+  </div>
+
+  <div class="center">
+    <button type="submit" ng-disabled="myForm.name.$invalid || myForm.email.$invalid && myForm.email.$dirty || myForm.street.$invalid && myForm.street.$dirty || myForm.state.$invalid && myForm.state.$dirty" ng-click="save()" class="btn-default btn-lg center">Submit</button>
+  </div>
 </form>
+
