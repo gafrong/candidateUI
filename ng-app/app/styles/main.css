@@ -31,6 +31,9 @@ body {
   margin: 20px;
   padding: 10px;
 }
+.blue {
+  color: blue;
+}
 .width-sm {
   width: 90px;
   padding-top: 7px;
