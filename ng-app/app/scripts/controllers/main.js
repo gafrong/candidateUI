@@ -30,7 +30,7 @@ angular.module('candidateApp')
     $scope.editCandidate = function(index) {
       $scope.candidateIndex = index;
     }
-
+   
     // $scope.getList();
 
   }]);
