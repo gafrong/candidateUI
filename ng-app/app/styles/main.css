@@ -31,6 +31,14 @@ body {
   margin: 20px;
   padding: 10px;
 }
+.width-sm {
+  width: 90px;
+  padding-top: 7px;
+}
+.padding-top-xs {
+  padding-top: 7px;
+  font-weight: bold;
+}
 .no-list-style {
   list-style-type: none;
 }
