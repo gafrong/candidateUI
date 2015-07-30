@@ -1,26 +1,32 @@
 <!-- <div class="container">
   <div class="row">  -->  
   <div>
-    <a href="/">
+
       <h2>Candidates</h2>
-    </a>
+    
       <table class="table table-striped">
         <thead>
           <tr>
             <td>Name </td>
+            <td>JobID</td>
             <td>Email </td>
             <td>Street </td>
             <td>State </td>
+            <td>Desired Pay </td>
             <!-- <td><a href="#/new"><i class="glyphicon glyphicon-plus"></i></a></td> -->
           </tr>
         </thead>
         <tbody>
           <tr ng-repeat="candidate in candidates">
             <td>{{candidate.name}}</td>
+            <td>{{candidate.jobid}}</td>
             <td>{{candidate.email}}</td>
             <td>{{candidate.street}}</td>
             <td>{{candidate.state}}</td>
-            <td><a href="#/edit/{{$index}}"><i class="glyphicon glyphicon-edit"></i></a></td>
+            <td>{{candidate.desired | currency}}</td>
+            <td>
+              <a href="#/edit/{{$index}}" data-toggle="tootltip" data-placement="top" title="Edit Candidate"><i class="glyphicon glyphicon-edit"></i></a>
+            </td>
           </tr>
         </tbody>
       </table>
